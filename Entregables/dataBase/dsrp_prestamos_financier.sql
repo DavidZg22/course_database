@@ -45,6 +45,26 @@
     );
     GO
 
+    CREATE TABLE sucursales(
+        id INT PRIMARY KEY IDENTITY(1,1),
+        nombre VARCHAR(100) UNIQUE NOT NULL,
+        telefono VARCHAR(15) NOT NULL,
+        direccion NVARCHAR(1000) NOT NULL,
+        gerente_id INT NOT NULL
+    )
+    GO
+
+    CREATE TABLE metodos_de_pago(
+        id INT PRIMARY KEY IDENTITY(1,1),
+        nombre VARCHAR(100) UNIQUE NOT NULL,
+        estado BIT NOT NULL,
+        description VARCHAR(1000)
+    )
+    Go
+    
+    CREATE TABLE metodos_pago(
+        id INT PRIMARY KEY IDENTITY(1,1),
+    )
     --EXEC sp_help clientes;
     -- 
     --SELECT GETDATE();

@@ -14,5 +14,5 @@
 #### Tabla de clientes
 ![Tabla de clientes](https://github.com/DavidZg22/course_database/blob/main/trabajo_03/img/clientes.png "Clientes")
 
-#### 
+#### Tabla de empleados
 ![Tabla de empleados](https://github.com/DavidZg22/course_database/blob/main/trabajo_03/img/empleado.png "Empleados")

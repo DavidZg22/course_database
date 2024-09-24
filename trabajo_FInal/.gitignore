@@ -15,3 +15,6 @@
 *.vrb
 *.dvi
 *.toc
+
+# Directorios
+/_minted-final

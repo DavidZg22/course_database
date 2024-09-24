@@ -1,7 +1,7 @@
 USE trabajo_tienda
 GO
 
-SELECT*FROM clientes;
+SELECT*FROM productos;
 EXEC SP_HELP empleado;
 
 --- Insertando empleados

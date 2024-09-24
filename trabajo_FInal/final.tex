@@ -1,0 +1,131 @@
+\documentclass[10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage[margin=2.54cm]{geometry}
+%\usepackage[a4paper, total={6in, 8in}]{geometry}
+
+\usepackage{minted}
+% Opciones generales para minted
+\setminted[sql]{
+  frame=lines,
+  framesep=2mm,
+  baselinestretch=1.2,
+  %bgcolor=lightgray,
+  fontsize=\footnotesize,
+  linenos
+}
+
+\begin{document}
+
+\begin{titlepage}
+    \centering
+    \vspace*{1cm}
+    
+    \includegraphics[width=0.8\textwidth]{images/logo.png}
+    
+    \vspace{0.5cm}
+    {\Large Base de datos con SQL SERVER}
+    
+    \vspace{1.5cm}
+    {\LARGE\bfseries Proyecto Final: Score Crediticio}
+    
+    \vspace{2cm}
+    \textbf{Autores:}\\
+    David Brandon Zevallos Garay
+
+
+    \vspace{0.5cm}
+    \textbf{Docente:}\\
+    Ing. Kevin Rivera Vergaray
+    
+    \vspace{2cm}
+    Lima, Perú\\
+    2024
+    
+    \vfill
+    Proyecto Final: Score Crediticio
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+\section{Iniciación: Definición de los objetivos y el alcance inicial de la base de datos.}
+
+\subsection{Título del Problema: Gestión de una Institución Educativa}
+\subsubsection{Descripción del Problema:}
+Una institución educativa necesita gestionar su información de manera efectiva. La base de datos de la institución contiene datos de docentes, especialidades, cursos, asignaciones de docentes a cursos, y matrículas de alumnos. Esta base de datos es crucial para el funcionamiento eficiente de la institución, ya que permite el seguimiento de docentes, alumnos, cursos y matrículas.
+
+\subsubsection{Tablas y campos relevantes:}
+
+
+\section{Análisis: Diseño Conceptual de la base de datos.}
+
+\section{Diseño: Definición del Modelo Lógico de la Base de Datos.}
+
+\section{Construcción: Desarrollo de las sentencias SQL que permiten la construcción de las tablas y demás estructuras de la Base de Datos en SQL SERVER.}
+
+\begin{minted}{sql}
+    CREATE DATABASE trabajo_tienda;
+GO
+
+USE tienda;
+GO
+
+CREATE TABLE productos(
+    id INT PRIMARY KEY IDENTITY(1,1),
+    nombre VARCHAR(100) NOT NULL,
+    descripcion VARCHAR(500) NOT NULL,
+    precio MONEY NOT NULL,
+    stock INT NOT NULL
+)
+GO
+
+
+CREATE TABLE clientes(
+    id INT PRIMARY KEY IDENTITY(1,1),
+    nombre VARCHAR(30) NOT NULL,
+    apellido VARCHAR(30) NOT NULL,
+    direccion VARCHAR(100) NOT NULL,
+    telefono VARCHAR(10) NOT NULL
+)
+GO
+
+CREATE TABLE empleado(
+    id INT PRIMARY KEY IDENTITY(1,1),
+    nombre VARCHAR(30) NOT NULL,
+    apellido VARCHAR(30) NOT NULL,
+    direccion VARCHAR(100) NOT NULL,
+    telefono VARCHAR(10) NOT NULL
+)
+
+CREATE TABLE ventas(
+    id INT PRIMARY KEY IDENTITY(1,1),
+    id_clientes INT NOT NULL,
+    id_vendedor INT NOT NULL,
+    fecha DATE NOT NULL,
+    cantidad INT NOT NULL,
+    total MONEY NOT NULL,
+    FOREIGN KEY (id_clientes) REFERENCES clientes(id),
+    FOREIGN key (id_vendedor) REFERENCES empleado(id)
+)
+GO
+
+CREATE TABLE detalles_ventas(
+    id INT PRIMARY KEY IDENTITY(1,1),
+    id_producto INT NOT NULL,
+    id_venta INT NOT NULL,
+    cantidad INT NOT NULL,
+    precio_unitario MONEY NOT NULL,
+    FOREIGN KEY (id_producto) REFERENCES productos(id),
+    FOREIGN KEY (id_venta) REFERENCES ventas(id)
+)
+GO
+\end{minted}
+    
+
+\section{Producto: Diseño Físico, Script de la Base de datos con inserción de datos (Mínimo 5 registros por tablas independientes o no transaccionales y mínimo 15 registros por cada tabla transaccional).}
+
+\section{Anexos: Evidencias de Consultas, funciones, procedimientos almacenados, vistas, etc. Realizados sobre la base de datos implementada. (5 ejercicios por integrante del grupo, Integrantes individuales (7 ejercicios))}
+
+\end{document}

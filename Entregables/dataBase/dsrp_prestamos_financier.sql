@@ -64,7 +64,25 @@
     
     CREATE TABLE metodos_pago(
         id INT PRIMARY KEY IDENTITY(1,1),
+        nombre VARCHAR(255) UNIQUE NOT NULL,
+        estado BIT NOT NULL,
+        descripcion VARCHAR(500) NOT NULL,
     )
+    GO
+
+    CREATE table empleados(
+        id INT PRIMARY KEY IDENTITY(1,1),
+        persona_id INT NOT NULL,
+        sucursal_id INT NOT NULL,
+        supervisor_id INT NOT NULL,
+        fecha_ingreso DATE NOT NULL,
+        CONSTRAINT fk_persona_natural_empleado FOREIGN KEY (persona_id) REFERENCES personas_naturales(id),
+        --- Para que le asigne un nombre aleatorio
+        FOREIGN KEY (sucursal_id) REFERENCES sucursales(id),
+        FOREIGN KEY (supervisor_id) REFERENCES empleados(id)
+    );
+    GO
+
     --EXEC sp_help clientes;
     -- 
     --SELECT GETDATE();

@@ -1,3 +1,3 @@
-SELECT * FROM clientes;
+---SELECT * FROM cuotas;
 
-EXEC sp_help 'clientes';
+EXEC sp_help 'detalles_cuotas_pagos';
